@@ -42,7 +42,6 @@
 #include <limits.h>
 #include <stdbool.h>
 
-
 /************************************************************/
 /*  GLOBAL FUNCTION PROTOTYPES								*/
 /************************************************************/
@@ -53,6 +52,8 @@ int print_fibonacci_n_term(int num);
 long int factorial_computation(int num);
 void bubble_sort(int *inputArray, int size);
 void insertion_sort(int *inputArray, int size);
+int hex_to_int(char c);
+int hex_to_ascii(char c, char d);
 
 /************************************************************/
 /*  GLOBAL DATATYPES/TYPEDEFs								*/
@@ -140,6 +141,37 @@ long int factorial_computation(int inputNum){
 }
 
 /************************************************************/
+/** @brief Compute the Hexadecimal to corresponding int values
+ *  of a given number
+ *  @param char inputChar
+ *  @return int result.
+ */
+/************************************************************/
+int hex_to_int(char c) {
+    if (c >= 97) {
+      c = c - 32;
+    }
+    int first = c / 16 - 3;
+    int second = c % 16;
+    int result = first * 10 + second;
+    if (result > 9) result--;
+    return result;
+}
+
+/************************************************************/
+/** @brief Compute the Hexadecimal to Ascii of a given number
+ *  @param char inputChar
+ *  @return int result.
+ */
+/************************************************************/
+// Need to validate and cover testcases for all types of expected input
+int hex_to_ascii(char c, char d) {
+    int high = hex_to_int(c) * 16;
+    int low = hex_to_int(d);
+    return high + low;
+}
+
+/************************************************************/
 /** @brief Compute the bubble sort algorithm for given array
  *  containing set of unsorted int values
  *  @param inputArray array containing unsorted integer values
@@ -184,16 +216,16 @@ void  bubbleSort(int *inputArray, int size) {
 // Best : О(n)
 void insertion_sort(int *inputArray, int size) {
   for (int i = 1;i < size;i++) {
-    int x = a[i];
+    int x = inputArray[i];
     int j = i;
-    while (j > 0 && a[j-1] > a[j]) {
-        int temporaryVariable=a[j];
-        a[j] = a[j-1];
-        a[j-1]=temporaryVariable;
-        j --;
+    while (j > 0 && inputArray[j-1] > inputArray[j]) {
+      int temporaryVariable = inputArray[j];
+      inputArray[j] = inputArray[j-1];
+      inputArray[j-1]=temporaryVariable;
+      j --;
     }
-    a[j] = x;
+    inputArray[j] = x;
   }
 }
 
-#enif //GLOBAL_FUNCTION_MODULES_H
+#endif //GLOBAL_FUNCTION_MODULES_H
