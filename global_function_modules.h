@@ -40,6 +40,7 @@
 #include <stdint.h>
 #include <ctype.h>
 #include <limits.h>
+#include <stdbool.h>
 
 
 /************************************************************/
@@ -50,6 +51,8 @@ void funcRecursBasic(int maxNum, int currentNum);
 void print_fibonacci_series(int maxTerm);
 int print_fibonacci_n_term(int num);
 long int factorial_computation(int num);
+void bubble_sort(int *inputArray, int size);
+void insertion_sort(int *inputArray, int size);
 
 /************************************************************/
 /*  GLOBAL DATATYPES/TYPEDEFs								*/
@@ -57,7 +60,6 @@ long int factorial_computation(int num);
 /************************************************************/
 /*  GLOBAL VARIABLES										*/
 /************************************************************/
-
 
 /************************************************************/
 /** @brief Prints the Error messageand exits from the program if
@@ -115,7 +117,7 @@ int print_fibonacci_n_term(int num) {
 void print_fibonacci_series(int maxTerm) {
 	while (maxTerm >= 0) {
 		int result = print_fibonacci_n_term(maxTerm);
-    	printf("%d\n", result);
+    printf("%d\n", result);
 		maxTerm--;
 	}
 }
@@ -137,4 +139,61 @@ long int factorial_computation(int inputNum){
 	}
 }
 
-#endif //GLOBAL_FUNCTION_MODULES_H
+/************************************************************/
+/** @brief Compute the bubble sort algorithm for given array
+ *  containing set of unsorted int values
+ *  @param inputArray array containing unsorted integer values
+ *  @param size of the array
+ *  @return long int result.
+ */
+/************************************************************/
+// Big O Complexity
+// average : О(n2)
+// Worst : О(n2)
+// Best : О(n)
+void  bubbleSort(int *inputArray, int size) {
+  bool swapped = true;
+  int j = 0;
+  int tmp;
+
+  while (swapped) {
+    swapped = false;
+    j++;
+    for (int i = 0; i < size - j; i++) {
+      if (inputArray[i] > inputArray[i + 1]){
+        tmp = inputArray[i];
+        inputArray[i] = inputArray[i + 1];
+        inputArray[i + 1] = tmp;
+        swapped = true;
+      }
+    }
+  } // WHILE OUTER LOOP
+}
+
+/************************************************************/
+/** @brief Compute the Insertion sort algorithm for given array
+ *  containing set of unsorted int values
+ *  @param inputArray array containing unsorted integer values
+ *  @param size of the array
+ *  @return long int result.
+ */
+/************************************************************/
+// Big O Complexity
+// average : О(n2)
+// Worst : О(n2)
+// Best : О(n)
+void insertion_sort(int *inputArray, int size) {
+  for (int i = 1;i < size;i++) {
+    int x = a[i];
+    int j = i;
+    while (j > 0 && a[j-1] > a[j]) {
+        int temporaryVariable=a[j];
+        a[j] = a[j-1];
+        a[j-1]=temporaryVariable;
+        j --;
+    }
+    a[j] = x;
+  }
+}
+
+#enif //GLOBAL_FUNCTION_MODULES_H

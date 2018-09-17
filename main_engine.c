@@ -60,22 +60,45 @@
  *  @return 0 for success 1 for errorcode.
  *
 ************************************************************/
-int main(int argc, char **argv){
+int main(void) {
 
-	// 01 Testing recursive basic
-	//funcRecursBasic(25,11);
+  // 01 Testing recursive basic
+  //funcRecursBasic(25,11);
 
-	//02 Testing Fibbo Series for finding Nth Term
-	//int inputNum = 8;
-	//print_fibonacci_n_term(inputNum);
+  //02 Testing Fibbo Series for finding Nth Term
+  //int inputNum = 8;
+  //print_fibonacci_n_term(inputNum);
 
-	//03 Testing Fibbo Series to print first N Numbers
-	// Improvement Print series in ascending order instead of descending forbetter readability
-	//int maxNum = 20;
-	//print_fibonacci_series(maxNum);
+  //03 Testing Fibbo Series to print first N Numbers
+  // Improvement Print series in ascending order instead of descending forbetter readability
+  //int maxNum = 20;
+  //print_fibonacci_series(maxNum);
 
-	//04 Testing factorial for Nth Number
-	int inputFactNum = 10;
-	printf("Factorial of %d is %ld \n", inputFactNum, factorial_computation(inputFactNum) );
+  //04 Testing factorial for Nth Number
+  //int inputFactNum = 10;
+  //printf("Factorial of %d is %ld \n", inputFactNum, factorial_computation(inputFactNum) );
 
+  // 05 bubble sort
+  /*int inputArray[] = {99, 56, 11, 1, 9, 0, 51, 33, 98, 1000, 12};
+  unsigned int i = 0;
+
+  bubble_sort(inputArray, sizeof(inputArray) / sizeof(int));
+  printf("The sortedArray: ");
+
+  for (i = 0; i < sizeof(inputArray) / sizeof(int); i++) {
+    printf(" %d, ", inputArray[i]);
+  }*/
+
+  // 05 Insertion sort
+  int inputArray[] = {99, 56, 11, 1, 9, 0, 51, 33, 98, 1000, 12};
+  unsigned int i = 0;
+
+  insertion_sort(inputArray, sizeof(inputArray) / sizeof(int));
+  printf("The sortedArray: ");
+
+  for (i = 0; i < sizeof(inputArray) / sizeof(int); i++) {
+    printf(" %d, ", inputArray[i]);
+  }
+
+  return EXIT_SUCCESS;
 }
